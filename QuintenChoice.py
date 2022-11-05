@@ -7,10 +7,6 @@ def configureSong():
     chosenSpeed = 0
     myFont = ("Arial 15")
 
-    def chooseTone(tone):
-        chosenTone = tone
-        print("Verstorben")
-
         
     def chooseDrum(drum):
         chosenDrum = drum
@@ -37,63 +33,58 @@ def configureSong():
 
     chosenText = Label(text = "Hello mf", font = myFont)
     chosenText_window = canvas.create_window(500, 350, window = chosenText, anchor = CENTER)
-    
 
+    class QuintButton:
 
+        def __init__(self, tone, width = 3, height = 1, ):
+            self.height = height
+            self.width = width
+            self.tone = tone
 
-    buttonC = Button(win, text = "C", font=myFont, command = chooseTone("C"), anchor = CENTER)
-    buttonC.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
-    buttonC_window = canvas.create_window(500, 200, anchor=N, window=buttonC)
+        def chooseTone(self):
+            chosenTone = self.tone
+            print("Verstorben")
 
-    buttonG = Button(win, text = "G", font=myFont, command = chooseTone("G"), anchor = CENTER)
-    buttonG.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
-    buttonG_window = canvas.create_window(570, 230, anchor=N, window=buttonG)
+        def create_buttons(self, x, y):
+            self.button = Button(win, text = self.tone, font = myFont, command = self.chooseTone,  anchor = CENTER)
+            self.button.configure(activebackground = "#738fa7", relief = FLAT)
+            self.button = canvas.create_window(x, y, anchor = N, window=self.button)
 
-    buttonD = Button(win, text = "D", font=myFont, command = chooseTone("D"), anchor = CENTER)
-    buttonD.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
-    buttonD_window = canvas.create_window(625, 280, anchor=N, window=buttonD)
+    buttonC = QuintButton("C")
+    buttonC.create_buttons(500, 200)
 
+    buttonG = QuintButton("G")
+    buttonG.create_buttons(570, 230)
 
+    buttonD = QuintButton("D")
+    buttonD.create_buttons(625, 280)
 
-    buttonA = Button(win, text = "A", font=myFont, command = chooseTone("A"), anchor = CENTER)
-    buttonA.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
-    buttonA_window = canvas.create_window(650, 350, anchor=N, window=buttonA)
+    buttonA = QuintButton("A")
+    buttonA.create_buttons(650, 350)
 
-    buttonE = Button(win, text = "E", font=myFont, command = chooseTone("E"), anchor = CENTER)
-    buttonE.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
-    buttonE_window = canvas.create_window(625, 420, anchor=N, window=buttonE)
+    buttonE = QuintButton("E")
+    buttonE.create_buttons(625, 420)
 
-    buttonH = Button(win, text = "H", font=myFont, command = chooseTone("H"), anchor = CENTER)
-    buttonH.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
-    buttonH_window = canvas.create_window(570, 470, anchor=N, window=buttonH)
+    buttonH = QuintButton("H")
+    buttonH.create_buttons(570, 470)
 
+    buttonFis = QuintButton("Fis")
+    buttonFis.create_buttons(500, 500)
 
+    buttonDes = QuintButton("Des")
+    buttonDes.create_buttons(430, 470)
 
-    buttonE = Button(win, text = "Fis", font=myFont, command = chooseTone("Fis"), anchor = CENTER)
-    buttonE.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
-    buttonE_window = canvas.create_window(500, 500, anchor=N, window=buttonE)
+    buttonAs = QuintButton("As")
+    buttonAs.create_buttons(375, 420)
 
-    buttonDes = Button(win, text = "Des", font=myFont, command = chooseTone("Des"), anchor = CENTER)
-    buttonDes.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
-    buttonDes_window = canvas.create_window(430, 470, anchor=N, window=buttonDes)
+    buttonEs = QuintButton("Es")
+    buttonEs.create_buttons(350, 350)
 
-    buttonAs = Button(win, text = "As", font=myFont, command = chooseTone("As"), anchor = CENTER)
-    buttonAs.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
-    buttonAs_window = canvas.create_window(375, 420, anchor=N, window=buttonAs)
+    buttonB = QuintButton("B")
+    buttonB.create_buttons(375, 280)
 
-
-
-    buttonEs = Button(win, text = "Es", font=myFont, command = chooseTone("Es"), anchor = CENTER)
-    buttonEs.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
-    buttonEs_window = canvas.create_window(350, 350, anchor=N, window=buttonEs)
-
-    buttonB = Button(win, text = "B", font=myFont, command = chooseTone("B"), anchor = CENTER)
-    buttonB.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
-    buttonB_window = canvas.create_window(375, 280, anchor=N, window=buttonB)
-
-    buttonF = Button(win, text = "F", font=myFont, command = chooseTone("F"), anchor = CENTER)
-    buttonF.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
-    buttonF_window = canvas.create_window(430, 230, anchor=N, window=buttonF)
+    buttonF = QuintButton("F")
+    buttonF.create_buttons(430, 230)
 
 
 

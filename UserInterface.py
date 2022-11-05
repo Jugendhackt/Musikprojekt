@@ -1,5 +1,5 @@
 from tkinter import *
-from QuintenChoice import configureSong
+from QuintenChoiceTestRew import configureSong
 master = Tk()
 
 def start():
