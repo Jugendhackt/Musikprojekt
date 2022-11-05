@@ -1,6 +1,6 @@
 from tkinter import *
 def configureSong():
-    UserInterface.close()
+    
     chosenTone = 0
     chosenDrum = 0
     chosenSpeed = 0
