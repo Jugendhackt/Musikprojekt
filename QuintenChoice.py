@@ -16,11 +16,11 @@ def configureSong():
         chosenSpeed =speed
 
     def playTrack(tone, drums, speed):
-        a = 1
-        #An Backend senden
-    def stopTrack(tone, drums, speed):
-        a = 1
-
+        print("Song wird abgespielt")
+        #Song aus Parametern abspielen
+    def stopTrack():
+        print("Song angehalten")
+        #Song anhalten
 
     win = Tk()
     win.geometry("1500x1000")
@@ -106,7 +106,7 @@ def configureSong():
     playButton.configure(width = 4, activebackground = "#738fa7", relief = FLAT)
     playButton_window = canvas.create_window(750, 630, anchor=N, window=playButton)
 
-    stopButton = Button(win, text = "Stop", font = myFont, command = stopTrack(chosenTone, chosenDrum, chosenSpeed), anchor = W)
+    stopButton = Button(win, text = "Stop", font = myFont, command = stopTrack, anchor = W)
     stopButton.configure(width = 4, activebackground = "#738fa7", relief = FLAT)
     stopButton_window = canvas.create_window(820, 630, anchor=N, window=stopButton)
 
