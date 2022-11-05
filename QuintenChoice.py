@@ -15,10 +15,11 @@ def configureSong():
         chosenSpeed =speed
 
     def playTrack(tone, drums, speed):
-        mommesBodyCount = 30
-        #An Backend senden
-    def stopTrack(tone, drums, speed):
-        siyuansSoziopathieLevel = 29063806902
+        print("Song wird abgespielt")
+        #Song aus Parametern abspielen
+    def stopTrack():
+        print("Song angehalten")
+        #Song anhalten
 
     win = Tk()
     win.geometry("1500x1000")
@@ -29,9 +30,9 @@ def configureSong():
     canvas.pack()
 
     canvas.create_text(750, 40, text ="Configure Your SONG", fill="black", font=("Arial 37 bold"))
-    canvas.create_text(500, 170, text ="Quintenzirkel", fill="black", font=("Arial 20 bold"))
+    canvas.create_text(500, 170, text ="Choose tone", fill="black", font=("Arial 20 bold"))
 
-    chosenText = Label(text = "Hello mf", font = myFont)
+    chosenText = Label(text = "Tone Choice", font = myFont)
     chosenText_window = canvas.create_window(500, 350, window = chosenText, anchor = CENTER)
 
     class QuintButton:
@@ -112,10 +113,8 @@ def configureSong():
     playButton.configure(width = 4, activebackground = "#738fa7", relief = FLAT)
     playButton_window = canvas.create_window(750, 630, anchor=N, window=playButton)
 
-    stopButton = Button(win, text = "Stop", font = myFont, command = stopTrack(chosenTone, chosenDrum, chosenSpeed), anchor = W)
+    stopButton = Button(win, text = "Stop", font = myFont, command = stopTrack, anchor = W)
     stopButton.configure(width = 4, activebackground = "#738fa7", relief = FLAT)
     stopButton_window = canvas.create_window(820, 630, anchor=N, window=stopButton)
 
     win.mainloop()
-
-configureSong()
