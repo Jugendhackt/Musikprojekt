@@ -2,6 +2,10 @@ from tkinter import *
 from QuintenChoice import configureSong
 master = Tk()
 
+def start():
+    master.destroy()
+    configureSong()
+    
 
 welcomeContent0 = "Welcome!"
 welcomeContent1 = "With this system, you can easily create your own songs without any experience!"
@@ -22,8 +26,9 @@ w.create_text(750, 280, text=welcomeContent2, fill="#071330", font=('Arial 18 bo
 w.create_text(750, 340, text=welcomeContent3, fill="#071330", font=('Arial 18 bold'))
 w.pack()
 
-buttonC = Button(w, text="Let's go!", font=("Arial 43 bold"), command=configureSong(), anchor=CENTER)
-buttonC.configure(width=9, height=2, background="#c3ceda",activebackground="#0c4160", relief=FLAT)
-buttonC_window = w.create_window(750, 420, anchor=N, window=buttonC)
+continueButton = Button(w, text="Let's go!", font=("Arial 43 bold"), command=start, anchor=CENTER)
+continueButton.configure(width=9, height=2, background="#c3ceda",activebackground="#0c4160", relief=FLAT)
+continueButton_window = w.create_window(750, 420, anchor=N, window=continueButton)
 
 w.mainloop()
+
