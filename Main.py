@@ -5,7 +5,9 @@ master = Tk()
 def start():
     master.destroy()
     configureSong()
-    
+
+def blueText(x, y, size, content):
+    w.create_text(x, y, text=content, fill="#071330", font=('Arial '+str(size)+' bold'))
 
 welcomeContent0 = "Welcome!"
 welcomeContent1 = "With this system, you can easily create your own songs without any experience!"
@@ -19,11 +21,11 @@ w.pack(side=TOP)
 w.create_rectangle(250, 100, 1250, 700, fill="#0c4160")
 w.create_rectangle(260, 110, 1240, 690, fill="#738fa7")
 
-w.create_text(750, 50, text="Music Mixer", fill="#071330", font=('Arial 37 bold'))
-w.create_text(750, 160, text=welcomeContent0, fill="#071330", font=('Arial 27 bold'))
-w.create_text(750, 230, text=welcomeContent1, fill="#071330", font=('Arial 18 bold'))
-w.create_text(750, 280, text=welcomeContent2, fill="#071330", font=('Arial 18 bold'))
-w.create_text(750, 340, text=welcomeContent3, fill="#071330", font=('Arial 18 bold'))
+blueText(750, 50, 37, "Music Mixer")
+blueText(750, 160, 27, welcomeContent0)
+blueText(750, 230, 18, welcomeContent1)
+blueText(750, 280, 18, welcomeContent2)
+blueText(750, 340, 18, welcomeContent3)
 w.pack()
 
 continueButton = Button(w, text="Let's go!", font=("Arial 43 bold"), command=start, anchor=CENTER)
@@ -31,4 +33,3 @@ continueButton.configure(width=9, height=2, background="#c3ceda",activebackgroun
 continueButton_window = w.create_window(750, 420, anchor=N, window=continueButton)
 
 w.mainloop()
-

@@ -34,13 +34,11 @@ def configureSong():
     canvas.pack()
 
     canvas.create_text(750, 40, text ="Configure Your SONG", fill="black", font=("Arial 37 bold"))
-    canvas.create_text(500, 170, text ="Quintenzirkel", fill="black", font=("Arial 20 bold"))
+    canvas.create_text(500, 170, text ="Choose tone", fill="black", font=("Arial 20 bold"))
 
-    chosenText = Label(text = "Hello mf", font = myFont)
+    chosenText = Label(text = "Tone Choice", font = myFont)
     chosenText_window = canvas.create_window(500, 350, window = chosenText, anchor = CENTER)
     
-
-
 
     buttonC = Button(win, text = "C", font=myFont, command = chooseTone("C"), anchor = CENTER)
     buttonC.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
@@ -54,8 +52,6 @@ def configureSong():
     buttonD.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
     buttonD_window = canvas.create_window(625, 280, anchor=N, window=buttonD)
 
-
-
     buttonA = Button(win, text = "A", font=myFont, command = chooseTone("A"), anchor = CENTER)
     buttonA.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
     buttonA_window = canvas.create_window(650, 350, anchor=N, window=buttonA)
@@ -68,8 +64,6 @@ def configureSong():
     buttonH.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
     buttonH_window = canvas.create_window(570, 470, anchor=N, window=buttonH)
 
-
-
     buttonE = Button(win, text = "Fis", font=myFont, command = chooseTone("Fis"), anchor = CENTER)
     buttonE.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
     buttonE_window = canvas.create_window(500, 500, anchor=N, window=buttonE)
@@ -81,8 +75,6 @@ def configureSong():
     buttonAs = Button(win, text = "As", font=myFont, command = chooseTone("As"), anchor = CENTER)
     buttonAs.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
     buttonAs_window = canvas.create_window(375, 420, anchor=N, window=buttonAs)
-
-
 
     buttonEs = Button(win, text = "Es", font=myFont, command = chooseTone("Es"), anchor = CENTER)
     buttonEs.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
@@ -127,5 +119,3 @@ def configureSong():
     stopButton_window = canvas.create_window(820, 630, anchor=N, window=stopButton)
 
     win.mainloop()
-
-configureSong()
