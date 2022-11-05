@@ -1,14 +1,17 @@
 from tkinter import *
+
 def configureSong():
 
     chosenTone = 0
     chosenDrum = 0
     chosenSpeed = 0
-    myFont = ("cursive 15 bold")
+    myFont = ("Arial 15")
 
     def chooseTone(tone):
         chosenTone = tone
+        print("Verstorben")
 
+        
     def chooseDrum(drum):
         chosenDrum = drum
 
@@ -16,14 +19,14 @@ def configureSong():
         chosenSpeed =speed
 
     def playTrack(tone, drums, speed):
-        a = 1
+        mommesBodyCount = 30
         #An Backend senden
     def stopTrack(tone, drums, speed):
-        a = 1
-
+        siyuansSoziopathieLevel = 29063806902
 
     win = Tk()
     win.geometry("1500x1000")
+
     canvas = Canvas(win, bg="#c3ceda", height = "1000", width = "1500")
 
     canvas.create_rectangle(250,100,1250,700, fill = "#738fa7")
@@ -31,6 +34,12 @@ def configureSong():
 
     canvas.create_text(750, 40, text ="Configure Your SONG", fill="black", font=("Arial 37 bold"))
     canvas.create_text(500, 170, text ="Quintenzirkel", fill="black", font=("Arial 20 bold"))
+
+    chosenText = Label(text = "Hello mf", font = myFont)
+    chosenText_window = canvas.create_window(500, 350, window = chosenText, anchor = CENTER)
+    
+
+
 
     buttonC = Button(win, text = "C", font=myFont, command = chooseTone("C"), anchor = CENTER)
     buttonC.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
@@ -89,16 +98,22 @@ def configureSong():
 
 
     buttonDrum1 = Button(win, text = "Drum One", font=myFont, command = chooseDrum("Drum1"), anchor = CENTER)
-    buttonDrum1.configure(width = 8, activebackground = "#738fa7", relief = FLAT)
-    buttonDrum1_window = canvas.create_window(941, 200, anchor=NW, window=buttonDrum1)
+    buttonDrum1.configure(width = 9, activebackground = "#738fa7", relief = FLAT)
+    buttonDrum1_window = canvas.create_window(1000, 200, anchor=N, window=buttonDrum1)
 
     buttonDrum2 = Button(win, text = "Drum Two", font=myFont, command = chooseDrum("Drum2"), anchor = CENTER)
-    buttonDrum2.configure(width = 8, activebackground = "#738fa7", relief = FLAT)
-    buttonDrum2_window = canvas.create_window(994, 250, anchor=N, window=buttonDrum2)
+    buttonDrum2.configure(width = 9, activebackground = "#738fa7", relief = FLAT)
+    buttonDrum2_window = canvas.create_window(1000, 250, anchor=N, window=buttonDrum2)
 
     buttonDrum3 = Button(win, text = "Drum Three", font=myFont, command = chooseDrum("Drum3"), anchor = CENTER)
     buttonDrum3.configure(width = 9, activebackground = "#738fa7", relief = FLAT)
     buttonDrum3_window = canvas.create_window(1000, 300, anchor=N, window=buttonDrum3)
+
+
+    canvas.create_text(850, 420, text ="Speed", fill="black", font=("Arial 15 bold"))
+    slider = Scale(win, from_= 1, to_=200, orient= HORIZONTAL)
+    slider.configure(length= 200, activebackground = "#738fa7", relief = FLAT)
+    slider_window = canvas.create_window(1000, 400, anchor=N, window=slider)
 
 
 
@@ -111,3 +126,5 @@ def configureSong():
     stopButton_window = canvas.create_window(820, 630, anchor=N, window=stopButton)
 
     win.mainloop()
+
+configureSong()
