@@ -131,5 +131,3 @@ def configureSong():
     stopButton_window = canvas.create_window(820, 630, anchor=N, window=stopButton)
 
     win.mainloop()
-
-configureSong()
