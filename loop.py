@@ -1,7 +1,7 @@
 from midiTest import euclidean_rhythm
 import time
-from synthesizer import Player, Synthesizer, Waveform
-from multiprocessing import Process
+#from synthesizer import Player, Synthesizer, Waveform
+from multiprocessing import Process, Pool
 from playsound import playsound
 
 
@@ -24,11 +24,11 @@ def playpulse():
     instrument3Beats=16
     instrument5Beats=4
 
-    instrument1= euclidean_rhythm(instrument1Beats,16)
-    instrument2= euclidean_rhythm(instrument2Beats,16)
-    instrument3= euclidean_rhythm(instrument3Beats,16)
-    instrument4= euclidean_rhythm(instrument4Beats,16)
-    instrument5= euclidean_rhythm(instrument5Beats,16)
+    instrument1= euclidean_rhythm(instrument1Beats,8)
+    instrument2= euclidean_rhythm(instrument2Beats,8)
+    instrument3= euclidean_rhythm(instrument3Beats,8)
+    instrument4= euclidean_rhythm(instrument4Beats,8)
+    instrument5= euclidean_rhythm(instrument5Beats,8)
 
     i1=0
     i2=0
@@ -44,41 +44,54 @@ def playpulse():
     beats= 6
     pulses= 50
 
-    while play == True:
-        if (instrument1[i1]==1):
-            P1=Process(target=playsound, args=("OS_ELK_Kick6.wav",))
-            P1.start()
-        if (instrument2[i2]==1):
-            P2=Process(target=playsound, args=("OS_ELK_Snare13.wav",))
-            P2.start()
-        if (instrument3[i3]==1):
-            P3=Process(target=playsound, args=("OS_ELK_Top 14.wav",))
-            P3.start()
-        if (instrument4[i4]==1):
-            P4=Process(target=playsound, args=("OS_ELK_Snare 20.wav",))
-            P4.start()
-        if (instrument5[i5]==1):
-            P5 =Process(target=playsound, args=("bass_a.wav",))
-            P5.start()
-        i1=+1
-        i2=+1
-        i3=+1
-        i4=+1
-        i5=+1
+    with Pool() as pool:
+        while play == True:
+            time.sleep(0.5)
 
-        if (i1== len(instrument1)):
-            i1 ==0
-        if (i2== len(instrument1)):
-            i2 ==0
-        if (i3== len(instrument1)):
-            i3 ==0
-        if (i3== len(instrument1)):
-            i3 ==0
-        if (i4== len(instrument1)):
-            i4 ==0
-        if (i5== len(instrument1)):
-            i5 ==0
+            if (instrument1[i1]==1):
+                pool.apply_async(playsound, args=("Sounds/OS_ELK_Kick6.wav",))
+                #P1=Process(target=playsound, args=("OS_ELK_C_Synth Instrument Hit 2.wav",))
+                #P1.start()
+                pass
+            if (instrument2[i2]==1):
+                pool.apply_async(playsound, args=("OS_ELK_SFX 22.wav",))
+                #P2=Process(target=playsound, args=("OS_ELK_SFX 22.wav",))
+                #P2.start()
+                pass
+            if (instrument3[i3]==1):
+                pool.apply_async(playsound, args=("Sounds/OS_ELK_Top 14.wav",))
+                #P3=Process(target=playsound, args=("OS_ELK_SFX 44.wav",))
+                #P3.start()
+                pass
+            if (instrument4[i4]==1):
+                pool.apply_async(playsound, args=("OS_ELK_Snare 20.wav",))
+                #P4=Process(target=playsound, args=("OS_ELK_Snare 20.wav",))
+                #P4.start()
+                pass
+            if (instrument5[i5]==1):
+                pool.apply_async(playsound, args=("bass_a.wav",))
+                #P5 =Process(target=playsound, args=("bass_a.wav",))
+                #P5.start()
+            i1+=1
+            i2+=1
+            i3+=1
+            i4+=1
+            i5+=1
 
+            if (i1== len(instrument1)):
+                i1 = 0
+            if (i2== len(instrument1)):
+                i2 = 0
+            if (i3== len(instrument1)):
+                i3 =0
+            if (i3== len(instrument1)):
+                i3 =0
+            if (i4== len(instrument1)):
+                i4 =0
+            if (i5== len(instrument1)):
+                i5 =0
+
+            print(i1)
 
         #for i in range (0, len(soundtest)) :
            # time.sleep(1)
