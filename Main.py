@@ -1,10 +1,9 @@
 from tkinter import *
 from QuintenChoice import *
+from math import sin, cos
+from ColorSchema import *
+from RectangleFunction import *
 master = Tk()
-primaryColor = "#c3ceda"
-primaryAccent = "#0c4160"
-secondaryColor = "#071330"
-secondaryAccent = "#738fa7"
 
 def start():
     master.destroy()
@@ -22,8 +21,8 @@ w = Canvas(master, width=1500, height=780, bg=primaryColor)
 w.place(relx=0.5, rely=0.5, anchor=CENTER)
 w.pack(side=TOP)
 
-w.create_rectangle(150, 100, 1350, 700, fill=primaryAccent)
-w.create_rectangle(160, 110, 1340, 690, fill=secondaryAccent)
+create_good_rectangle(w, 150, 100, 1350, 700, 40, 8, primaryAccent)
+create_good_rectangle(w, 160, 110, 1340, 690, 40, 8, secondaryAccent)
 
 blueText(750, 50, 45, "Music Mixer")
 blueText(750, 160, 33, welcomeContent0)
@@ -33,7 +32,7 @@ blueText(750, 340, 22, welcomeContent3)
 w.pack()
 
 continueButton = Button(w, text="Let's go",fg=secondaryColor, font=("Arial 39 bold"), command=start, anchor=CENTER)
-continueButton.configure(width=8, height=2, background=primaryColor, activebackground=primaryAccent, relief=FLAT)
+continueButton.configure(width=8, height=2, background=primaryColor, activebackground=primaryAccent, relief=GROOVE)
 continueButton_window = w.create_window(750, 440, anchor=N, window=continueButton)
 
-w.mainloop()
+mainloop()
