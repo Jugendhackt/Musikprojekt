@@ -3,7 +3,7 @@ import time
 #from synthesizer import Player, Synthesizer, Waveform
 from multiprocessing import Process, Pool
 from playsound import playsound
-
+import QuintenChoice
 
 #def playprocess(sound):
 #    print(sound)
@@ -17,18 +17,23 @@ def play2():
 
 
 
-def playpulse():
-    instrument1Beats=3
-    instrument2Beats=2
-    instrument4Beats=6
+def playpulse(instrument1Beats,instrument2Beats, instrument4Beats):
+    
+ #   global beat1 
+  #  global beat2
+   # global beat3
+
+   # instrument1Beats= 
+    #instrument2Beats= beat2.get()
+    #instrument4Beats= beat3.get()
     instrument3Beats=16
     instrument5Beats=4
 
-    instrument1= euclidean_rhythm(instrument1Beats,8)
-    instrument2= euclidean_rhythm(instrument2Beats,8)
-    instrument3= euclidean_rhythm(instrument3Beats,8)
-    instrument4= euclidean_rhythm(instrument4Beats,8)
-    instrument5= euclidean_rhythm(instrument5Beats,8)
+    instrument1= euclidean_rhythm(instrument1Beats,16)
+    instrument2= euclidean_rhythm(instrument2Beats,16)
+    instrument3= euclidean_rhythm(instrument3Beats,16)
+    instrument4= euclidean_rhythm(instrument4Beats,16)
+    instrument5= euclidean_rhythm(instrument5Beats,16)
 
     i1=0
     i2=0

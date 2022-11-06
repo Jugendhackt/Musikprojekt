@@ -21,18 +21,21 @@ def configureSong():
     create_good_rectangle(canvas, 250, 100, 1250, 700, 40, 8, secondaryAccent)
    
     canvas.create_text(860,400, text ="Beat 1", fill="#071330", font=("Arial 15 bold"))
+    global beat1
     beat1 = Scale(canvas, from_= 1, to_=16, orient= HORIZONTAL)
     beat1.set(8)
     beat1.configure(length= 200, activebackground = "#738fa7", relief = FLAT)
     beat1Window = canvas.create_window(1000,400, window = beat1)
 
     canvas.create_text(860,450, text ="Beat 2", fill="#071330", font=("Arial 15 bold"))
+    global beat2
     beat2 = Scale(canvas, from_= 1, to_=16, orient= HORIZONTAL)
     beat2.set(8)
     beat2.configure(length= 200, activebackground = "#738fa7", relief = FLAT)
     beat2Window = canvas.create_window(1000,450, window = beat2)
 
     canvas.create_text(860,500, text ="Beat 3", fill="#071330", font=("Arial 15 bold"))
+    global beat3 
     beat3 = Scale(canvas, from_= 1, to_=16, orient= HORIZONTAL)
     beat3.set(8)
     beat3.configure(length= 200, activebackground = "#738fa7", relief = FLAT)
@@ -95,7 +98,7 @@ def configureSong():
         def playTrack(self):
             #print(chosenTone, chosenDrum, chosenSpeed) 
             global P
-            P = Process(target=loop.playpulse)
+            P = Process(target=loop.playpulse, args= (beat1.get(), beat2.get(),beat3.get()))
             P.start()
             print("Play")
         #Song aus Parametern abspielen
