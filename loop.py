@@ -49,27 +49,27 @@ def playpulse():
             time.sleep(0.5)
 
             if (instrument1[i1]==1):
-                pool.apply_async(playsound, args=("Sounds/OS_ELK_Kick6.wav",))
+                pool.apply_async(playsound, args=(u"Sounds/OS_ELK_Kick6.wav",))
                 #P1=Process(target=playsound, args=("OS_ELK_C_Synth Instrument Hit 2.wav",))
                 #P1.start()
                 pass
             if (instrument2[i2]==1):
-                pool.apply_async(playsound, args=("OS_ELK_SFX 22.wav",))
+                pool.apply_async(playsound, args=(u"OS_ELK_SFX_22.wav",))
                 #P2=Process(target=playsound, args=("OS_ELK_SFX 22.wav",))
                 #P2.start()
                 pass
             if (instrument3[i3]==1):
-                pool.apply_async(playsound, args=("Sounds/OS_ELK_Top 14.wav",))
+                pool.apply_async(playsound, args=(u"Sounds/OS_ELK_Top_14.wav",))
                 #P3=Process(target=playsound, args=("OS_ELK_SFX 44.wav",))
                 #P3.start()
                 pass
             if (instrument4[i4]==1):
-                pool.apply_async(playsound, args=("OS_ELK_Snare 20.wav",))
+                pool.apply_async(playsound, args=(u"OS_ELK_Snare_20.wav",))
                 #P4=Process(target=playsound, args=("OS_ELK_Snare 20.wav",))
                 #P4.start()
                 pass
             if (instrument5[i5]==1):
-                pool.apply_async(playsound, args=("bass_a.wav",))
+                pool.apply_async(playsound, args=(u"bass_a.wav",))
                 #P5 =Process(target=playsound, args=("bass_a.wav",))
                 #P5.start()
             i1+=1
