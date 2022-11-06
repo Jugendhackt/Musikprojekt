@@ -76,9 +76,9 @@ def configureSong():
             self.tone = tone
 
         def chooseTone(self):
-            global chosenTone
-            chosenTone.append(self.tone)
-            print(chosenTone)
+            #global chosenTone
+            chosenTones.append(self.tone)
+            print(chosenTones)
 
         def create_button(self, x, y):
             self.button = Button(win, text = self.tone, font = myFont, command = self.chooseTone,  anchor = CENTER)
@@ -182,6 +182,3 @@ def configureSong():
 
     win.mainloop()
 
-if __name__ == "__main__":
-
-    configureSong()
