@@ -76,7 +76,7 @@ def configureSong():
             self.tone = tone
 
         def chooseTone(self):
-            #global chosenTone
+            global chosenTone
             chosenTone.append(self.tone)
             print(chosenTone)
 
