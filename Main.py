@@ -1,27 +1,38 @@
-import pretty_midi
+from tkinter import *
+from QuintenChoice import *
+from math import sin, cos
+from ColorSchema import *
+from RectangleFunction import *
+master = Tk()
 
-import pychord
+def start():
+    master.destroy()
+    configureSong()
 
-def create_midi(chords):
-    midi_data = pretty_midi.PrettyMIDI()
-    piano_program = pretty_midi.instrument_name_to_program('Acoustic Grand Piano')
-    piano = pretty_midi.Instrument(program=piano_program)
-    length = 1
-    for n, chord in enumerate(chords):
-        for note_name in chord.components_with_pitch(root_pitch=4):
-            note_number = pretty_midi.note_name_to_number(note_name)
-            note = pretty_midi.Note(velocity=100, pitch=note_number, start=n * length, end=(n + 1) * length)
-            piano.notes.append(note)
-    midi_data.instruments.append(piano)
-    midi_data.write('chord.mid')
+def blueText(x, y, size, content):
+    w.create_text(x, y, text=content, fill=secondaryColor, font=('Arial '+str(size)+' bold'))
 
+welcomeContent0 = "Welcome!"
+welcomeContent1 = "With this system, you can easily create your own songs without any experience!"
+welcomeContent2 = "It is simple and easy to use - and you still have a variety of options to choose from."
+welcomeContent3 = "Click on the button below to get started!"
 
-def main():
-    chords_str = ["C", "Dm7", "G", "C"]
-    chords = [pychord.Chord(c) for c in chords_str]
-    create_midi(chords)
+w = Canvas(master, width=1500, height=780, bg=primaryColor)
+w.place(relx=0.5, rely=0.5, anchor=CENTER)
+w.pack(side=TOP)
 
+create_good_rectangle(w, 150, 100, 1350, 700, 40, 8, primaryAccent)
+create_good_rectangle(w, 160, 110, 1340, 690, 40, 8, secondaryAccent)
 
-if __name__ == '__main__':
-    main()
+blueText(750, 50, 45, "Music Mixer")
+blueText(750, 160, 33, welcomeContent0)
+blueText(750, 230, 22, welcomeContent1)
+blueText(750, 280, 22, welcomeContent2)
+blueText(750, 340, 22, welcomeContent3)
+w.pack()
 
+continueButton = Button(w, text="Let's go",fg=secondaryColor, font=("Arial 39 bold"), command=start, anchor=CENTER)
+continueButton.configure(width=8, height=2, background=primaryColor, activebackground=primaryAccent, relief=GROOVE)
+continueButton_window = w.create_window(750, 440, anchor=N, window=continueButton)
+
+mainloop()

@@ -1,3 +1,3 @@
-# Musikprojekt
+# Music Mixer
 
-Software, um für Einsteiger*innen es zu ermöglichen, Musik zu produzieren.
+Software, die es jedem ermöglicht, Songs zu erstellen. Die Nutzer benötigen keine Vorkenntnisse.

@@ -1,113 +1,214 @@
 from tkinter import *
+from RectangleFunction import *
+from ColorSchema import *
+chosenTone = 0
+chosenDrum = 0
+
+
+chosenSpeed = []
+chosenBeat = []
+chosenPulse = []
+
 def configureSong():
     
-    chosenTone = 0
-    chosenDrum = 0
-    chosenSpeed = 0
-    myFont = ("cursive 15 bold")
 
-    def chooseTone(tone):
-        chosenTone = tone
-
-    def chooseDrum(drum):
-        chosenDrum = drum
-
-    def chooseSpeed(speed):
-        chosenSpeed =speed
-
-    def playTrack(tone, drums, speed):
-        a = 1
-        #An Backend senden
-    def stopTrack(tone, drums, speed):
-        a = 1
-
+    myFont = ("Arial 15")
 
     win = Tk()
-    win.geometry("1500x1000")
-    canvas = Canvas(win, bg="#c3ceda", height = "1000", width = "1500")
+    win.geometry("1500x780")
 
-    canvas.create_rectangle(250,100,1250,700, fill = "#738fa7")
+    canvas = Canvas(win, bg="#c3ceda", height = "780", width = "1500")
+    
+    create_good_rectangle(canvas, 240, 90, 1260, 710, 40, 8, primaryAccent)
+    create_good_rectangle(canvas, 250, 100, 1250, 700, 40, 8, secondaryAccent)
+   
+
+
     canvas.pack()
 
-    canvas.create_text(750, 40, text ="Configure Your SONG", fill="black", font=("Arial 37 bold"))
-    canvas.create_text(500, 170, text ="Quintenzirkel", fill="black", font=("Arial 20 bold"))
+    canvas.create_text(750, 50, text ="Configure Your SONG", fill="#071330", font=("Arial 37 bold"))
+    canvas.create_text(500, 170, text ="Choose tone", fill="#071330", font=("Arial 20 bold"))
 
-    buttonC = Button(win, text = "C", font=myFont, command = chooseTone("C"), anchor = CENTER)
-    buttonC.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
-    buttonC_window = canvas.create_window(500, 200, anchor=N, window=buttonC)
+    chosenText = Label(text = "Tone Choice", font = myFont)
+    chosenText_window = canvas.create_window(500, 390, window = chosenText, anchor = CENTER)
 
-    buttonG = Button(win, text = "G", font=myFont, command = chooseTone("G"), anchor = CENTER)
-    buttonG.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
-    buttonG_window = canvas.create_window(570, 230, anchor=N, window=buttonG)
+    class DrumButton:
 
-    buttonD = Button(win, text = "D", font=myFont, command = chooseTone("D"), anchor = CENTER)
-    buttonD.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
-    buttonD_window = canvas.create_window(625, 280, anchor=N, window=buttonD)
+        def __init__(self, drum, width = 9):
+            self.width = width
+            self.drum = drum
+
+        def chooseDrum(self):
+            global chosenDrum
+            chosenDrum = self.drum
+            print("Verstorben")
+
+        def create_button(self, x, y):
+            self.button = Button(win, text = self.drum, font=myFont, command = self.chooseDrum, anchor = CENTER)
+            self.button.configure(activebackground = "#738fa7", relief = FLAT)
+            self.button = canvas.create_window(x, y, anchor = N, window=self.button)
+
+    class DrumButton:
+
+        def __init__(self, drum, width = 9):
+            self.width = width
+            self.drum =drum
+
+        def chooseDrum(drum):
+            global chosenDrum
+            chosenDrum = self.drum
+            print("Verstorben")
+
+        def create_button(self, x, y):
+            self.button = Button(win, text = self.drum, font=myFont, command = self.chooseDrum, anchor = CENTER)
+            self.button.configure(activebackground = "#738fa7", relief = FLAT)
+            self.button = canvas.create_window(x, y, anchor = N, window=self.button)
+
+    class QuintButton:
+
+        def __init__(self, tone, width = 3, height = 1, ):
+            self.height = height
+            self.width = width
+            self.tone = tone
+
+        def chooseTone(self):
+            global chosenTone
+            chosenTone = self.tone
+            print("Verstorben")
+            print(chosenTone, chosenDrum, chosenSpeed)
+
+        def create_button(self, x, y):
+            self.button = Button(win, text = self.tone, font = myFont, command = self.chooseTone,  anchor = CENTER)
+            self.button.configure(activebackground = "#738fa7", relief = FLAT)
+            self.button = canvas.create_window(x, y, anchor = CENTER, window=self.button)
+
+    class StartButton:
+
+        def __init__(self, width = 4):
+            self.width = width
+
+        def playTrack(self):
+            print(chosenTone, chosenDrum, chosenSpeed) 
+            print("Song wird abgespielt")
+        #Song aus Parametern abspielen
+
+        def create_button(self, x, y):
+            self.button = Button(win, text = "Play", font = myFont, command = self.playTrack, anchor = W)
+            self.button.configure(activebackground = "#738fa7", relief = FLAT)
+            self.button = canvas.create_window(x, y, anchor = N, window=self.button)
+
+    canvas.create_text(850, 400, text ="Speed", fill="#071330", font=("Arial 15 bold"))
+    chosenSpeed = Scale(win, from_= 1, to_=200, orient= HORIZONTAL)
+    chosenSpeed.set(100)
+    chosenSpeed.configure(length= 200, activebackground = "#738fa7", relief = FLAT)
+    chosenSpeed_window = canvas.create_window(1000, 400, anchor=CENTER, window=chosenSpeed)
+
+    canvas.create_text(850, 480, text ="Pulse", fill="#071330", font=("Arial 15 bold"))
+    chosenPulse = Scale(win, from_= 1, to_=32, orient= HORIZONTAL)
+    chosenPulse.set(16)
+    chosenPulse.configure(length= 200, activebackground = "#738fa7", relief = FLAT)
+    chosenPulse_window = canvas.create_window(1000, 480, anchor=CENTER, window=chosenPulse)
+
+    canvas.create_text(850, 560, text ="Beats", fill="#071330", font=("Arial 15 bold"))
+    chosenBeats = Scale(win, from_= 1, to_=32, orient= HORIZONTAL)
+    chosenBeats.set(16)
+    chosenBeats.configure(length= 200, activebackground = "#738fa7", relief = FLAT)
+    chosenBeats_window = canvas.create_window(1000, 560, anchor=CENTER, window=chosenBeats)
+    """
+    class Slider:
+
+        def __init__(self, name):
+            self.name = name
+
+        
+
+        def create_scale(self, scalefrom, scaleto, x, y):
+            canvas.create_text(850, 560, text = self.name, fill="#071330", font=("Arial 15 bold"))
+            global chosenBeats
+            chosenBeats = Scale(win, from_= scalefrom, to_=scaleto, orient= HORIZONTAL)
+            chosenBeats.set(16)
+            chosenBeats.configure(length= 200, activebackground = "#738fa7", relief = FLAT)
+            chosenBeats_window = canvas.create_window(x, y, anchor=CENTER, window=chosenBeats)
+    """
+
+
+    def stopTrack():
+        print("Song anhalten")
+
+    buttonC = QuintButton("C")
+    buttonC.create_button(500, 240)
+
+    buttonG = QuintButton("G")
+    buttonG.create_button(570, 270)
+
+    buttonD = QuintButton("D")
+    buttonD.create_button(625, 320)
+
+    buttonA = QuintButton("A")
+    buttonA.create_button(650, 390)
+
+    buttonE = QuintButton("E")
+    buttonE.create_button(625, 460)
+
+    buttonH = QuintButton("H")
+    buttonH.create_button(570, 510)
+
+    buttonFis = QuintButton("Fis")
+    buttonFis.create_button(500, 540)
+
+    buttonDes = QuintButton("Des")
+    buttonDes.create_button(430, 510)
+
+    buttonAs = QuintButton("As")
+    buttonAs.create_button(375, 460)
+
+    buttonEs = QuintButton("Es")
+    buttonEs.create_button(350, 390)
+
+    buttonB = QuintButton("B")
+    buttonB.create_button(375, 320)
+
+    buttonF = QuintButton("F")
+    buttonF.create_button(430, 270)
+
+    buttonDrum1 = DrumButton("Drum One")
+    buttonDrum1.create_button(1000, 200)
+    
+    buttonDrum2 = DrumButton("Drum Two")
+    buttonDrum2.create_button(1000, 250)
 
 
 
-    buttonA = Button(win, text = "A", font=myFont, command = chooseTone("A"), anchor = CENTER)
-    buttonA.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
-    buttonA_window = canvas.create_window(650, 350, anchor=N, window=buttonA)
+    buttonDrum3 = DrumButton("Drum Three")
+    buttonDrum3.create_button(1000, 300)
 
-    buttonE = Button(win, text = "E", font=myFont, command = chooseTone("E"), anchor = CENTER)
-    buttonE.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
-    buttonE_window = canvas.create_window(625, 420, anchor=N, window=buttonE)
+    playButton = StartButton()
+    playButton.create_button(750, 630)
 
-    buttonH = Button(win, text = "H", font=myFont, command = chooseTone("H"), anchor = CENTER)
-    buttonH.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
-    buttonH_window = canvas.create_window(570, 470, anchor=N, window=buttonH)
-
-
-
-    buttonE = Button(win, text = "Fis", font=myFont, command = chooseTone("Fis"), anchor = CENTER)
-    buttonE.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
-    buttonE_window = canvas.create_window(500, 500, anchor=N, window=buttonE)
-
-    buttonDes = Button(win, text = "Des", font=myFont, command = chooseTone("Des"), anchor = CENTER)
-    buttonDes.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
-    buttonDes_window = canvas.create_window(430, 470, anchor=N, window=buttonDes)
-
-    buttonAs = Button(win, text = "As", font=myFont, command = chooseTone("As"), anchor = CENTER)
-    buttonAs.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
-    buttonAs_window = canvas.create_window(375, 420, anchor=N, window=buttonAs)
-
-
-
-    buttonEs = Button(win, text = "Es", font=myFont, command = chooseTone("Es"), anchor = CENTER)
-    buttonEs.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
-    buttonEs_window = canvas.create_window(350, 350, anchor=N, window=buttonEs)
-
-    buttonB = Button(win, text = "B", font=myFont, command = chooseTone("B"), anchor = CENTER)
-    buttonB.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
-    buttonB_window = canvas.create_window(375, 280, anchor=N, window=buttonB)
-
-    buttonF = Button(win, text = "F", font=myFont, command = chooseTone("F"), anchor = CENTER)
-    buttonF.configure(width = 3, height = 1, activebackground = "#738fa7", relief = FLAT)
-    buttonF_window = canvas.create_window(430, 230, anchor=N, window=buttonF)
-
-
-
-    buttonDrum1 = Button(win, text = "Drum One", font=myFont, command = chooseDrum("Drum1"), anchor = CENTER)
-    buttonDrum1.configure(width = 8, activebackground = "#738fa7", relief = FLAT)
-    buttonDrum1_window = canvas.create_window(941, 200, anchor=NW, window=buttonDrum1)
-
-    buttonDrum2 = Button(win, text = "Drum Two", font=myFont, command = chooseDrum("Drum2"), anchor = CENTER)
-    buttonDrum2.configure(width = 8, activebackground = "#738fa7", relief = FLAT)
-    buttonDrum2_window = canvas.create_window(994, 250, anchor=N, window=buttonDrum2)
-
-    buttonDrum3 = Button(win, text = "Drum Three", font=myFont, command = chooseDrum("Drum3"), anchor = CENTER)
-    buttonDrum3.configure(width = 9, activebackground = "#738fa7", relief = FLAT)
-    buttonDrum3_window = canvas.create_window(1000, 300, anchor=N, window=buttonDrum3)
-
-
-
-    playButton = Button(win, text = "Play", font = myFont, command = playTrack(chosenTone, chosenDrum, chosenSpeed), anchor = W)
-    playButton.configure(width = 4, activebackground = "#738fa7", relief = FLAT)
-    playButton_window = canvas.create_window(750, 630, anchor=N, window=playButton)
-
-    stopButton = Button(win, text = "Stop", font = myFont, command = stopTrack(chosenTone, chosenDrum, chosenSpeed), anchor = W)
+    stopButton = Button(win, text = "Stop", font = myFont, command = stopTrack, anchor = W)
     stopButton.configure(width = 4, activebackground = "#738fa7", relief = FLAT)
     stopButton_window = canvas.create_window(820, 630, anchor=N, window=stopButton)
+
+
+    canvas.create_text(850, 400, text ="Speed", fill="#071330", font=("Arial 15 bold"))
+    chosenSpeed.append(Scale(win, from_= 1, to_=200, orient= HORIZONTAL))
+    chosenSpeed.set(100)
+    chosenSpeed.configure(length= 200, activebackground = "#738fa7", relief = FLAT)
+    chosenSpeed_window = canvas.create_window(1000, 400, anchor=CENTER, window=chosenSpeed)
+
+    canvas.create_text(850, 480, text ="Pulse", fill="#071330", font=("Arial 15 bold"))
+    chosenPulse.append(Scale(win, from_= 1, to_=32, orient= HORIZONTAL))
+    chosenPulse.set(16)
+    chosenPulse.configure(length= 200, activebackground = "#738fa7", relief = FLAT)
+    chosenPulse_window = canvas.create_window(1000, 480, anchor=CENTER, window=chosenPulse)
+
+    canvas.create_text(850, 560, text ="Beats", fill="#071330", font=("Arial 15 bold"))
+    chosenBeats.append(Scale(win, from_= 1, to_=32, orient= HORIZONTAL))
+    chosenBeats.set(16)
+    chosenBeats.configure(length= 200, activebackground = "#738fa7", relief = FLAT)
+    chosenBeats_window = canvas.create_window(1000, 560, anchor=CENTER, window=chosenBeats)
+
+    canvas.create_text(1000, 170, text ="Choose drumset", fill="#071330", font=("Arial 20 bold"))
+
 
     win.mainloop()
