@@ -45,7 +45,7 @@ def configureSong():
     canvas.create_text(750, 50, text ="Configure Your SONG", fill="#071330", font=("Arial 37 bold"))
     canvas.create_text(500, 170, text ="Choose tone", fill="#071330", font=("Arial 20 bold"))
 
-    chosenText = Label(text = chosenTones, font = myFont)
+    chosenText = Label(text = "Circle of fifths", font = myFont)
     chosenText_window = canvas.create_window(500, 390, window = chosenText, anchor = CENTER)
     class DrumButton:
 
@@ -82,7 +82,7 @@ def configureSong():
             elif len(chosenTones) <= 3:
                 chosenTones.append(self.tone)
             print(chosenTones)
-            chosenText(text = "jajbg")
+            
 
 
         def create_button(self, x, y):
