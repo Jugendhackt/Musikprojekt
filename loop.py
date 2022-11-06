@@ -1,5 +1,5 @@
 from midiTest import euclidean_rhythm
-import time 
+import time
 from synthesizer import Player, Synthesizer, Waveform
 from multiprocessing import Process
 from playsound import playsound
@@ -15,7 +15,7 @@ instrument3Beats=16
 instrument5Beats=4
 def play1():
     playsound("OS_ELK_SFX22.wav")
-                    
+
 def play2():
     playsound("OS_ELK_C_Synth_Instrument_Hit_4.wav")
 
@@ -31,9 +31,11 @@ i3=0
 i4=0
 i5=0
 
-if __name__ == '__main__':
+def playpulse():
     zähler=0
-    play=True
+    global play
+    play = True
+    print("playpulse")
 
     beats= 6
     pulses= 50
@@ -59,7 +61,7 @@ if __name__ == '__main__':
         i3=+1
         i4=+1
         i5=+1
-        
+
         if (i1== len(instrument1)):
             i1 ==0
         if (i2== len(instrument1)):
@@ -72,8 +74,8 @@ if __name__ == '__main__':
             i4 ==0
         if (i5== len(instrument1)):
             i5 ==0
-            
-        
+
+
         #for i in range (0, len(soundtest)) :
            # time.sleep(1)
            # if (soundtest[i] == 1):
@@ -82,18 +84,16 @@ if __name__ == '__main__':
                 
                 #P1 = Process(name="sound1", target=playsound, args=("OS_ELK_SFX22.wav",))
                 #P2 = Process(name="sound2", target=playsound, args=("OS_ELK_C_Synth_Instrument_Hit_4.wav",))
-                
+
                 #P1 = Process(target=play1)
                 #P2 = Process(target=play2)
-                 
+
                 #P5.start()
                 #P4.start()
                 #P3.start()
                # P2.start()
                 #P1.start()
-                            
-                            
-                    
-    #print(euclidean_rhythm (4,16))
 
-    
+
+
+    #print(euclidean_rhythm (4,16))

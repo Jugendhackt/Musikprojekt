@@ -1,15 +1,13 @@
 from tkinter import *
 from RectangleFunction import *
 from ColorSchema import *
+import loop
+from multiprocessing import Process
 
 
-chosenTone = []
+chosenTones = []
 chosenDrum = []
-
-
-chosenSpeed = []
-chosenBeat = []
-chosenPulse = []
+chosenBeats = []
 
 def configureSong():
     
@@ -24,8 +22,23 @@ def configureSong():
     create_good_rectangle(canvas, 240, 90, 1260, 710, 40, 8, primaryAccent)
     create_good_rectangle(canvas, 250, 100, 1250, 700, 40, 8, secondaryAccent)
    
+    canvas.create_text(860,400, text ="Beat 1", fill="#071330", font=("Arial 15 bold"))
+    beat1 = Scale(canvas, from_= 1, to_=16, orient= HORIZONTAL)
+    beat1.set(8)
+    beat1.configure(length= 200, activebackground = "#738fa7", relief = FLAT)
+    beat1Window = canvas.create_window(1000,400, window = beat1)
 
+    canvas.create_text(860,450, text ="Beat 2", fill="#071330", font=("Arial 15 bold"))
+    beat2 = Scale(canvas, from_= 1, to_=16, orient= HORIZONTAL)
+    beat2.set(8)
+    beat2.configure(length= 200, activebackground = "#738fa7", relief = FLAT)
+    beat2Window = canvas.create_window(1000,450, window = beat2)
 
+    canvas.create_text(860,500, text ="Beat 3", fill="#071330", font=("Arial 15 bold"))
+    beat3 = Scale(canvas, from_= 1, to_=16, orient= HORIZONTAL)
+    beat3.set(8)
+    beat3.configure(length= 200, activebackground = "#738fa7", relief = FLAT)
+    beat3Window = canvas.create_window(1000,500, window = beat3)
     canvas.pack()
 
     canvas.create_text(750, 50, text ="Configure Your SONG", fill="#071330", font=("Arial 37 bold"))
@@ -45,6 +58,10 @@ def configureSong():
             chosenDrum.append(self.drum)
             print(chosenDrum)
 
+        def chooseDrum(self):
+            global chosenDrum
+            chosenDrum = self.drum
+            print("Verstorben")
 
         def create_button(self, x, y):
             self.button = Button(win, text = self.drum, font=myFont, command = self.chooseDrum, anchor = CENTER)
@@ -60,8 +77,8 @@ def configureSong():
 
         def chooseTone(self):
             #global chosenTone
-            chosenTone.append(self.tone)
-            print(chosenTone)
+            chosenTones.append(self.tone)
+            print(chosenTones)
 
         def create_button(self, x, y):
             self.button = Button(win, text = self.tone, font = myFont, command = self.chooseTone,  anchor = CENTER)
@@ -74,8 +91,10 @@ def configureSong():
             self.width = width
 
         def playTrack(self):
-            print(chosenTone, chosenDrum, chosenSpeed) 
-            print("Song wird abgespielt")
+            #print(chosenTone, chosenDrum, chosenSpeed) 
+            P = Process(target=loop.playpulse)
+            P.start()
+            print("Play")
         #Song aus Parametern abspielen
 
         def create_button(self, x, y):
@@ -83,6 +102,7 @@ def configureSong():
             self.button.configure(activebackground = "#738fa7", relief = FLAT)
             self.button = canvas.create_window(x, y, anchor = N, window=self.button)
 
+    
     """
     class Slider:
 
@@ -146,10 +166,8 @@ def configureSong():
     buttonDrum2 = DrumButton("Drum Two")
     buttonDrum2.create_button(1000, 250)
 
-
-
     buttonDrum3 = DrumButton("Drum Three")
-    buttonDrum3.create_button(1000, 300)
+    buttonDrum3.create_button(1006, 300)
 
     playButton = StartButton()
     playButton.create_button(750, 630)
@@ -164,4 +182,6 @@ def configureSong():
 
     win.mainloop()
 
-configureSong()
+if __name__ == "__main__":
+
+    configureSong()

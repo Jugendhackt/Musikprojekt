@@ -35,4 +35,5 @@ continueButton = Button(w, text="Let's go",fg=secondaryColor, font=("Arial 39 bo
 continueButton.configure(width=8, height=2, background=primaryColor, activebackground=primaryAccent, relief=GROOVE)
 continueButton_window = w.create_window(750, 440, anchor=N, window=continueButton)
 
+
 mainloop()
