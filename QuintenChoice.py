@@ -132,10 +132,23 @@ def configureSong():
     stopButton_window = canvas.create_window(820, 630, anchor=N, window=stopButton)
 
 
-    canvas.create_text(850, 420, text ="Speed", fill="black", font=("Arial 15 bold"))
-    slider = Scale(win, from_= 1, to_=200, orient= HORIZONTAL)
-    slider.configure(length= 200, activebackground = "#738fa7", relief = FLAT)
-    slider_window = canvas.create_window(1000, 400, anchor=N, window=slider)
+    canvas.create_text(850, 400, text ="Speed", fill="black", font=("Arial 15 bold"))
+    sliderSpeed = Scale(win, from_= 1, to_=200, orient= HORIZONTAL)
+    sliderSpeed.set(100)
+    sliderSpeed.configure(length= 200, activebackground = "#738fa7", relief = FLAT)
+    sliderSpeed_window = canvas.create_window(1000, 400, anchor=CENTER, window=sliderSpeed)
+
+    canvas.create_text(850, 480, text ="Pulse", fill="black", font=("Arial 15 bold"))
+    sliderPulse = Scale(win, from_= 1, to_=32, orient= HORIZONTAL)
+    sliderPulse.set(16)
+    sliderPulse.configure(length= 200, activebackground = "#738fa7", relief = FLAT)
+    sliderPulse_window = canvas.create_window(1000, 480, anchor=CENTER, window=sliderPulse)
+
+    canvas.create_text(850, 560, text ="Beats", fill="black", font=("Arial 15 bold"))
+    sliderBeats = Scale(win, from_= 1, to_=32, orient= HORIZONTAL)
+    sliderBeats.set(16)
+    sliderBeats.configure(length= 200, activebackground = "#738fa7", relief = FLAT)
+    sliderBeats_window = canvas.create_window(1000, 560, anchor=CENTER, window=sliderBeats)
 
     win.mainloop()
 
