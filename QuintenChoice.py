@@ -149,7 +149,7 @@ def configureSong():
 
 
     buttonDrum3 = DrumButton("Drum Three")
-    buttonDrum3.create_button(1000, 300)
+    buttonDrum3.create_button(1006, 300)
 
     playButton = StartButton()
     playButton.create_button(750, 630)
