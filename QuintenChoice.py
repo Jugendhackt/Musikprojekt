@@ -1,5 +1,6 @@
 from tkinter import *
-
+from RectangleFunction import *
+from ColorSchema import *
 def configureSong():
     
     chosenTone = 0
@@ -26,7 +27,8 @@ def configureSong():
 
     canvas = Canvas(win, bg="#c3ceda", height = "780", width = "1500")
 
-    canvas.create_rectangle(250,100,1250,700, fill = "#738fa7")
+    create_good_rectangle(canvas, 250, 100, 1250, 700, 40, 8, secondaryAccent)
+
     canvas.pack()
 
     canvas.create_text(750, 50, text ="Configure Your SONG", fill="#071330", font=("Arial 37 bold"))
@@ -131,5 +133,4 @@ def configureSong():
     stopButton.configure(width = 4, activebackground = "#738fa7", relief = FLAT)
     stopButton_window = canvas.create_window(790, 630, anchor=N, window=stopButton)
 
-    win.mainloop()
-configureSong()
+    mainloop()
