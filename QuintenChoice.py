@@ -5,9 +5,7 @@ chosenTone = 0
 chosenDrum = 0
 
 
-chosenSpeed = []
-chosenBeat = []
-chosenPulse = []
+chosenBeats = []
 
 def configureSong():
     
@@ -22,8 +20,11 @@ def configureSong():
     create_good_rectangle(canvas, 240, 90, 1260, 710, 40, 8, primaryAccent)
     create_good_rectangle(canvas, 250, 100, 1250, 700, 40, 8, secondaryAccent)
    
-
-
+    canvas.create_text(300,400, text ="Beats", fill="#071330", font=("Arial 15 bold"))
+    beat1 = Scale(canvas, from_= 1, to_=32, orient= HORIZONTAL)
+    beat1.set(16)
+    beat1.configure(length= 200, activebackground = "#738fa7", relief = FLAT)
+    beat1Window = canvas.create_window(1000,400, window = beat1)
     canvas.pack()
 
     canvas.create_text(750, 50, text ="Configure Your SONG", fill="#071330", font=("Arial 37 bold"))
@@ -54,7 +55,7 @@ def configureSong():
             self.width = width
             self.drum =drum
 
-        def chooseDrum(drum):
+        def chooseDrum(self):
             global chosenDrum
             chosenDrum = self.drum
             print("Verstorben")
@@ -97,23 +98,7 @@ def configureSong():
             self.button.configure(activebackground = "#738fa7", relief = FLAT)
             self.button = canvas.create_window(x, y, anchor = N, window=self.button)
 
-    canvas.create_text(850, 400, text ="Speed", fill="#071330", font=("Arial 15 bold"))
-    chosenSpeed = Scale(win, from_= 1, to_=200, orient= HORIZONTAL)
-    chosenSpeed.set(100)
-    chosenSpeed.configure(length= 200, activebackground = "#738fa7", relief = FLAT)
-    chosenSpeed_window = canvas.create_window(1000, 400, anchor=CENTER, window=chosenSpeed)
-
-    canvas.create_text(850, 480, text ="Pulse", fill="#071330", font=("Arial 15 bold"))
-    chosenPulse = Scale(win, from_= 1, to_=32, orient= HORIZONTAL)
-    chosenPulse.set(16)
-    chosenPulse.configure(length= 200, activebackground = "#738fa7", relief = FLAT)
-    chosenPulse_window = canvas.create_window(1000, 480, anchor=CENTER, window=chosenPulse)
-
-    canvas.create_text(850, 560, text ="Beats", fill="#071330", font=("Arial 15 bold"))
-    chosenBeats = Scale(win, from_= 1, to_=32, orient= HORIZONTAL)
-    chosenBeats.set(16)
-    chosenBeats.configure(length= 200, activebackground = "#738fa7", relief = FLAT)
-    chosenBeats_window = canvas.create_window(1000, 560, anchor=CENTER, window=chosenBeats)
+    
     """
     class Slider:
 
@@ -190,25 +175,8 @@ def configureSong():
     stopButton_window = canvas.create_window(820, 630, anchor=N, window=stopButton)
 
 
-    canvas.create_text(850, 400, text ="Speed", fill="#071330", font=("Arial 15 bold"))
-    chosenSpeed.append(Scale(win, from_= 1, to_=200, orient= HORIZONTAL))
-    chosenSpeed.set(100)
-    chosenSpeed.configure(length= 200, activebackground = "#738fa7", relief = FLAT)
-    chosenSpeed_window = canvas.create_window(1000, 400, anchor=CENTER, window=chosenSpeed)
-
-    canvas.create_text(850, 480, text ="Pulse", fill="#071330", font=("Arial 15 bold"))
-    chosenPulse.append(Scale(win, from_= 1, to_=32, orient= HORIZONTAL))
-    chosenPulse.set(16)
-    chosenPulse.configure(length= 200, activebackground = "#738fa7", relief = FLAT)
-    chosenPulse_window = canvas.create_window(1000, 480, anchor=CENTER, window=chosenPulse)
-
-    canvas.create_text(850, 560, text ="Beats", fill="#071330", font=("Arial 15 bold"))
-    chosenBeats.append(Scale(win, from_= 1, to_=32, orient= HORIZONTAL))
-    chosenBeats.set(16)
-    chosenBeats.configure(length= 200, activebackground = "#738fa7", relief = FLAT)
-    chosenBeats_window = canvas.create_window(1000, 560, anchor=CENTER, window=chosenBeats)
-
-    canvas.create_text(1000, 170, text ="Choose drumset", fill="#071330", font=("Arial 20 bold"))
-
+    canvas.create_text(1000, 300, text ="Choose drumset", fill="#071330", font=("Arial 20 bold"))
 
     win.mainloop()
+
+configureSong()
