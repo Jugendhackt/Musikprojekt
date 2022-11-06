@@ -7,9 +7,7 @@ chosenTone = []
 chosenDrum = []
 
 
-chosenSpeed = []
-chosenBeat = []
-chosenPulse = []
+chosenBeats = []
 
 def configureSong():
     
@@ -24,8 +22,11 @@ def configureSong():
     create_good_rectangle(canvas, 240, 90, 1260, 710, 40, 8, primaryAccent)
     create_good_rectangle(canvas, 250, 100, 1250, 700, 40, 8, secondaryAccent)
    
-
-
+    canvas.create_text(300,400, text ="Beats", fill="#071330", font=("Arial 15 bold"))
+    beat1 = Scale(canvas, from_= 1, to_=32, orient= HORIZONTAL)
+    beat1.set(16)
+    beat1.configure(length= 200, activebackground = "#738fa7", relief = FLAT)
+    beat1Window = canvas.create_window(1000,400, window = beat1)
     canvas.pack()
 
     canvas.create_text(750, 50, text ="Configure Your SONG", fill="#071330", font=("Arial 37 bold"))
@@ -45,6 +46,10 @@ def configureSong():
             chosenDrum.append(self.drum)
             print(chosenDrum)
 
+        def chooseDrum(self):
+            global chosenDrum
+            chosenDrum = self.drum
+            print("Verstorben")
 
         def create_button(self, x, y):
             self.button = Button(win, text = self.drum, font=myFont, command = self.chooseDrum, anchor = CENTER)
@@ -83,6 +88,7 @@ def configureSong():
             self.button.configure(activebackground = "#738fa7", relief = FLAT)
             self.button = canvas.create_window(x, y, anchor = N, window=self.button)
 
+    
     """
     class Slider:
 
