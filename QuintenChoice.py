@@ -4,17 +4,18 @@ chosenTone = 0
 chosenDrum = 0
 chosenSpeed = 0
 
-
-
 def configureSong():
     
+
+    myFont = ("Arial 15")
+
     def chooseSpeed(speed):
         global chosenSpeed
         chosenSpeed = speed
 
-    myFont = ("Arial 15")    
     win = Tk()
     win.geometry("1500x1000")
+
     canvas = Canvas(win, bg="#c3ceda", height = "1000", width = "1500")
 
     canvas.create_rectangle(250,100,1250,700, fill = "#738fa7")
@@ -32,14 +33,14 @@ def configureSong():
             self.width = width
             self.drum =drum
 
-        def chooseDrum(self):
+        def chooseDrum(drum):
             global chosenDrum
-            chosenDrum = self.drum
+            chosenDrum = drum
             print("Verstorben")
             print(chosenTone, chosenDrum, chosenSpeed)
 
         def create_button(self, x, y):
-            self.button = Button(win, text = self.drum, font=myFont, command = self.chooseDrum, anchor = CENTER)
+            self.button = Button(win, text = self.rum, font=myFont, command = self.chooseDrum, anchor = CENTER)
             self.button.configure(activebackground = "#738fa7", relief = FLAT)
             self.button = canvas.create_window(x, y, anchor = N, window=self.button)
 
