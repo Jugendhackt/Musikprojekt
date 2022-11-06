@@ -1,19 +1,20 @@
 from tkinter import *
 
+chosenTone = 0
+chosenDrum = 0
+chosenSpeed = 0
+
+
+
 def configureSong():
     
-    chosenTone = 0
-    chosenDrum = 0
-    chosenSpeed = 0
-    myFont = ("Arial 15")
-
     def chooseSpeed(speed):
         global chosenSpeed
         chosenSpeed = speed
 
+    myFont = ("Arial 15")    
     win = Tk()
     win.geometry("1500x1000")
-
     canvas = Canvas(win, bg="#c3ceda", height = "1000", width = "1500")
 
     canvas.create_rectangle(250,100,1250,700, fill = "#738fa7")
@@ -27,17 +28,18 @@ def configureSong():
 
     class DrumButton:
 
-        def __init__(self, Drum, width = 9):
+        def __init__(self, drum, width = 9):
             self.width = width
-            self.Drum = Drum
+            self.drum =drum
 
-        def chooseDrum(drum):
+        def chooseDrum(self):
             global chosenDrum
-            chosenDrum = drum
+            chosenDrum = self.drum
             print("Verstorben")
+            print(chosenTone, chosenDrum, chosenSpeed)
 
         def create_button(self, x, y):
-            self.button = Button(win, text = self.Drum, font=myFont, command = self.chooseDrum, anchor = CENTER)
+            self.button = Button(win, text = self.drum, font=myFont, command = self.chooseDrum, anchor = CENTER)
             self.button.configure(activebackground = "#738fa7", relief = FLAT)
             self.button = canvas.create_window(x, y, anchor = N, window=self.button)
 
@@ -52,6 +54,7 @@ def configureSong():
             global chosenTone
             chosenTone = self.tone
             print("Verstorben")
+            print(chosenTone, chosenDrum, chosenSpeed)
 
         def create_button(self, x, y):
             self.button = Button(win, text = self.tone, font = myFont, command = self.chooseTone,  anchor = CENTER)
@@ -64,9 +67,7 @@ def configureSong():
             self.width = width
 
         def playTrack(self):
-            #chosenTone 
-            #chosenDrum
-            #chosenSpeed
+            print(chosenTone, chosenDrum, chosenSpeed) 
             print("Song wird abgespielt")
         #Song aus Parametern abspielen
 
@@ -151,5 +152,6 @@ def configureSong():
     sliderBeats_window = canvas.create_window(1000, 560, anchor=CENTER, window=sliderBeats)
 
     win.mainloop()
+    
 
 configureSong()
