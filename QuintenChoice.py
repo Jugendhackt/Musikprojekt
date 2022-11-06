@@ -4,13 +4,11 @@ from ColorSchema import *
 import loop
 from multiprocessing import Process
 
-
 chosenTones = []
 chosenDrum = []
 chosenBeats = []
 
 def configureSong():
-    
 
     myFont = ("Arial 15")
 
@@ -46,7 +44,6 @@ def configureSong():
 
     chosenText = Label(text = chosenTones, font = myFont)
     chosenText_window = canvas.create_window(500, 390, window = chosenText, anchor = CENTER)
-
     class DrumButton:
 
         def __init__(self, drum, width = 9):
@@ -81,8 +78,8 @@ def configureSong():
                 chosenTones.remove(self.tone)
             elif len(chosenTones) <= 3:
                 chosenTones.append(self.tone)
-            chosenText = chosenTones
             print(chosenTones)
+            chosenText(text = "jajbg")
 
 
         def create_button(self, x, y):
