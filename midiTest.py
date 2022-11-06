@@ -25,5 +25,8 @@ def euclidean_rhythm(beats, pulses):
         rests -= 1
 
     return result
-print(euclidean_rhythm (4,16))
+
+
+
+#print(euclidean_rhythm(2,16))
 

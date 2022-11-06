@@ -2,6 +2,7 @@ from synthesizer import Player, Synthesizer, Waveform
 
 from multiprocessing import Process
 
+
 def play1():
     from playsound import playsound
     playsound('OS_ELK_SFX22.wav')

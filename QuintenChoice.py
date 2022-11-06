@@ -1,8 +1,10 @@
 from tkinter import *
 from RectangleFunction import *
 from ColorSchema import *
-chosenTone = 0
-chosenDrum = 0
+
+
+chosenTone = []
+chosenDrum = []
 
 
 chosenBeats = []
@@ -37,23 +39,12 @@ def configureSong():
 
         def __init__(self, drum, width = 9):
             self.width = width
-            self.drum = drum
+            self.drum =drum
 
         def chooseDrum(self):
-            global chosenDrum
-            chosenDrum = self.drum
-            print("Verstorben")
-
-        def create_button(self, x, y):
-            self.button = Button(win, text = self.drum, font=myFont, command = self.chooseDrum, anchor = CENTER)
-            self.button.configure(activebackground = "#738fa7", relief = FLAT)
-            self.button = canvas.create_window(x, y, anchor = N, window=self.button)
-
-    class DrumButton:
-
-        def __init__(self, drum, width = 9):
-            self.width = width
-            self.drum =drum
+            #global chosenDrum
+            chosenDrum.append(self.drum)
+            print(chosenDrum)
 
         def chooseDrum(self):
             global chosenDrum
@@ -73,10 +64,9 @@ def configureSong():
             self.tone = tone
 
         def chooseTone(self):
-            global chosenTone
-            chosenTone = self.tone
-            print("Verstorben")
-            print(chosenTone, chosenDrum, chosenSpeed)
+            #global chosenTone
+            chosenTone.append(self.tone)
+            print(chosenTone)
 
         def create_button(self, x, y):
             self.button = Button(win, text = self.tone, font = myFont, command = self.chooseTone,  anchor = CENTER)
@@ -174,8 +164,9 @@ def configureSong():
     stopButton.configure(width = 4, activebackground = "#738fa7", relief = FLAT)
     stopButton_window = canvas.create_window(820, 630, anchor=N, window=stopButton)
 
+    canvas.create_text(1000, 170, text ="Choose drumset", fill="#071330", font=("Arial 20 bold"))
 
-    canvas.create_text(1000, 300, text ="Choose drumset", fill="#071330", font=("Arial 20 bold"))
+
 
     win.mainloop()
 
