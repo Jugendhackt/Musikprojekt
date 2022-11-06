@@ -18,8 +18,11 @@ def configureSong():
     win.geometry("1500x780")
 
     canvas = Canvas(win, bg="#c3ceda", height = "780", width = "1500")
-
+    
+    create_good_rectangle(canvas, 240, 90, 1260, 710, 40, 8, primaryAccent)
     create_good_rectangle(canvas, 250, 100, 1250, 700, 40, 8, secondaryAccent)
+   
+
 
     canvas.pack()
 
@@ -59,7 +62,7 @@ def configureSong():
             print(chosenTone, chosenDrum, chosenSpeed)
 
         def create_button(self, x, y):
-            self.button = Button(win, text = self.rum, font=myFont, command = self.chooseDrum, anchor = CENTER)
+            self.button = Button(win, text = self.drum, font=myFont, command = self.chooseDrum, anchor = CENTER)
             self.button.configure(activebackground = "#738fa7", relief = FLAT)
             self.button = canvas.create_window(x, y, anchor = N, window=self.button)
 
@@ -97,44 +100,43 @@ def configureSong():
             self.button = canvas.create_window(x, y, anchor = N, window=self.button)
 
     def stopTrack():
-        print("Song angehalten")
-        #Song anhalten
+        print("Song anhalten")
 
     buttonC = QuintButton("C")
-    buttonC.create_buttons(500, 240)
+    buttonC.create_button(500, 240)
 
     buttonG = QuintButton("G")
-    buttonG.create_buttons(570, 270)
+    buttonG.create_button(570, 270)
 
     buttonD = QuintButton("D")
-    buttonD.create_buttons(625, 320)
+    buttonD.create_button(625, 320)
 
     buttonA = QuintButton("A")
-    buttonA.create_buttons(650, 390)
+    buttonA.create_button(650, 390)
 
     buttonE = QuintButton("E")
-    buttonE.create_buttons(625, 460)
+    buttonE.create_button(625, 460)
 
     buttonH = QuintButton("H")
-    buttonH.create_buttons(570, 510)
+    buttonH.create_button(570, 510)
 
     buttonFis = QuintButton("Fis")
-    buttonFis.create_buttons(500, 540)
+    buttonFis.create_button(500, 540)
 
     buttonDes = QuintButton("Des")
-    buttonDes.create_buttons(430, 510)
+    buttonDes.create_button(430, 510)
 
     buttonAs = QuintButton("As")
-    buttonAs.create_buttons(375, 460)
+    buttonAs.create_button(375, 460)
 
     buttonEs = QuintButton("Es")
-    buttonEs.create_buttons(350, 390)
+    buttonEs.create_button(350, 390)
 
     buttonB = QuintButton("B")
-    buttonB.create_buttons(375, 320)
+    buttonB.create_button(375, 320)
 
     buttonF = QuintButton("F")
-    buttonF.create_buttons(430, 270)
+    buttonF.create_button(430, 270)
 
     buttonDrum1 = DrumButton("Drum One")
     buttonDrum1.create_button(1000, 200)
@@ -173,14 +175,4 @@ def configureSong():
     chosenBeats_window = canvas.create_window(1000, 560, anchor=CENTER, window=chosenBeats)
 
 
-
-    playButton = Button(win, text = "Play", font = myFont, command = playTrack(chosenTone, chosenDrum, chosenSpeed), anchor = W)
-    playButton.configure(width = 4, activebackground = "#738fa7", relief = FLAT)
-    playButton_window = canvas.create_window(710, 630, anchor=N, window=playButton)
-
-    stopButton = Button(win, text = "Stop", font = myFont, command = stopTrack, anchor = W)
-    stopButton.configure(width = 4, activebackground = "#738fa7", relief = FLAT)
-    stopButton_window = canvas.create_window(790, 630, anchor=N, window=stopButton)
-
     win.mainloop()
-configureSong()

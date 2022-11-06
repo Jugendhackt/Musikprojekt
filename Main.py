@@ -32,7 +32,7 @@ blueText(750, 340, 22, welcomeContent3)
 w.pack()
 
 continueButton = Button(w, text="Let's go",fg=secondaryColor, font=("Arial 39 bold"), command=start, anchor=CENTER)
-continueButton.configure(width=8, height=2, background=primaryColor, activebackground=primaryAccent, relief=FLAT)
+continueButton.configure(width=8, height=2, background=primaryColor, activebackground=primaryAccent, relief=GROOVE)
 continueButton_window = w.create_window(750, 440, anchor=N, window=continueButton)
 
 mainloop()
