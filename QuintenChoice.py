@@ -44,7 +44,7 @@ def configureSong():
     canvas.create_text(750, 50, text ="Configure Your SONG", fill="#071330", font=("Arial 37 bold"))
     canvas.create_text(500, 170, text ="Choose tone", fill="#071330", font=("Arial 20 bold"))
 
-    chosenText = Label(text = "Tone Choice", font = myFont)
+    chosenText = Label(text = chosenTones, font = myFont)
     chosenText_window = canvas.create_window(500, 390, window = chosenText, anchor = CENTER)
 
     class DrumButton:
@@ -77,8 +77,13 @@ def configureSong():
 
         def chooseTone(self):
             #global chosenTone
-            chosenTones.append(self.tone)
+            if self.tone in chosenTones:
+                chosenTones.remove(self.tone)
+            elif len(chosenTones) <= 3:
+                chosenTones.append(self.tone)
+            chosenText = chosenTones
             print(chosenTones)
+
 
         def create_button(self, x, y):
             self.button = Button(win, text = self.tone, font = myFont, command = self.chooseTone,  anchor = CENTER)
@@ -92,6 +97,7 @@ def configureSong():
 
         def playTrack(self):
             #print(chosenTone, chosenDrum, chosenSpeed) 
+            global P
             P = Process(target=loop.playpulse)
             P.start()
             print("Play")
@@ -122,7 +128,9 @@ def configureSong():
 
 
     def stopTrack():
-        print("Song anhalten")
+        global P
+        P.terminate()
+        P.join()
 
     buttonC = QuintButton("C")
     buttonC.create_button(500, 240)
