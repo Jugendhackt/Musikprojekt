@@ -166,8 +166,6 @@ def configureSong():
     buttonDrum2 = DrumButton("Drum Two")
     buttonDrum2.create_button(1000, 250)
 
-
-
     buttonDrum3 = DrumButton("Drum Three")
     buttonDrum3.create_button(1006, 300)
 
