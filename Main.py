@@ -11,6 +11,7 @@ if __name__ == "__main__":
     def start():
         master.destroy()
         configureSong()
+        
 
     def blueText(x, y, size, content):
         w.create_text(x, y, text=content, fill=secondaryColor, font=('Arial '+str(size)+' bold'))

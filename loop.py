@@ -18,7 +18,7 @@ def play1():
 
 def play2():
     playsound("OS_ELK_C_Synth_Instrument_Hit_4.wav")
-
+    
 instrument1= euclidean_rhythm(instrument1Beats,16)
 instrument2= euclidean_rhythm(instrument2Beats,16)
 instrument3= euclidean_rhythm(instrument3Beats,16)
