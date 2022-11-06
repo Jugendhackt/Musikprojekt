@@ -8,30 +8,34 @@ from playsound import playsound
 #def playprocess(sound):
 #    print(sound)
 #    playsound(sound)
-instrument1Beats=3
-instrument2Beats=2
-instrument4Beats=6
-instrument3Beats=16
-instrument5Beats=4
+
 def play1():
     playsound("OS_ELK_SFX22.wav")
 
 def play2():
     playsound("OS_ELK_C_Synth_Instrument_Hit_4.wav")
 
-instrument1= euclidean_rhythm(instrument1Beats,16)
-instrument2= euclidean_rhythm(instrument2Beats,16)
-instrument3= euclidean_rhythm(instrument3Beats,16)
-instrument4= euclidean_rhythm(instrument4Beats,16)
-instrument5= euclidean_rhythm(instrument5Beats,16)
 
-i1=0
-i2=0
-i3=0
-i4=0
-i5=0
 
 def playpulse():
+    instrument1Beats=3
+    instrument2Beats=2
+    instrument4Beats=6
+    instrument3Beats=16
+    instrument5Beats=4
+
+    instrument1= euclidean_rhythm(instrument1Beats,16)
+    instrument2= euclidean_rhythm(instrument2Beats,16)
+    instrument3= euclidean_rhythm(instrument3Beats,16)
+    instrument4= euclidean_rhythm(instrument4Beats,16)
+    instrument5= euclidean_rhythm(instrument5Beats,16)
+
+    i1=0
+    i2=0
+    i3=0
+    i4=0
+    i5=0
+
     zähler=0
     global play
     play = True
@@ -42,16 +46,16 @@ def playpulse():
 
     while play == True:
         if (instrument1[i1]==1):
-            P1=Process(target=playsound, args=("OS_ELK_Snare 20.wav",))
+            P1=Process(target=playsound, args=("OS_ELK_Kick6.wav",))
             P1.start()
         if (instrument2[i2]==1):
-            P2=Process(target=playsound, args=("OS_ELK_C_Synth Instrument Hit 2.wav",))
+            P2=Process(target=playsound, args=("OS_ELK_Snare13.wav",))
             P2.start()
         if (instrument3[i3]==1):
-            P3=Process(target=playsound, args=("OS_ELK_SFX 22.wav",))
+            P3=Process(target=playsound, args=("OS_ELK_Top 14.wav",))
             P3.start()
         if (instrument4[i4]==1):
-            P4=Process(target=playsound, args=("OS_ELK_SFX 44.wav",))
+            P4=Process(target=playsound, args=("OS_ELK_Snare 20.wav",))
             P4.start()
         if (instrument5[i5]==1):
             P5 =Process(target=playsound, args=("bass_a.wav",))
