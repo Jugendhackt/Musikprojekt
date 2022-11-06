@@ -1,6 +1,8 @@
 from tkinter import *
 from RectangleFunction import *
 from ColorSchema import *
+import loop
+from multiprocessing import Process
 
 
 chosenTone = []
@@ -75,7 +77,9 @@ def configureSong():
 
         def playTrack(self):
             print(chosenTone, chosenDrum, chosenSpeed) 
-            print("Song wird abgespielt")
+            P = Process(target=loop.playpulse)
+            P.start()
+            print("Play")
         #Song aus Parametern abspielen
 
         def create_button(self, x, y):
@@ -164,4 +168,6 @@ def configureSong():
 
     win.mainloop()
 
-configureSong()
+if __name__ == "__main__":
+
+    configureSong()
